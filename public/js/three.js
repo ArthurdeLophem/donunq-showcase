@@ -13,6 +13,11 @@ const light = new THREE.SpotLight()
 light.position.set(5, 5, 5)
 scene.add(light)
 
+const loader = new GLTFLoader();
+loader.load('../assets/donunq_object.glb', (gltf) => {
+    scene.add(gltf.scene)
+})
+
 function animate() {
     requestAnimationFrame(animate)
     render()
