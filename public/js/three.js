@@ -5,6 +5,15 @@ import { HDRCubeTextureLoader } from "three/addons/loaders/HDRCubeTextureLoader.
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
 import { sRGBEncoding } from 'three';
 
+const planets = [
+    '../assets/2k_venus_surface.jpg',
+    '../assets/2k_jupiter.jpg',
+    '../assets/2k_mars.jpg',
+    '../assets/2k_mercury.jpg',
+    '../assets/2k_neptune.jpg',
+    '../assets/2k_uranus.jpg'
+]
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.z = 0.4;
@@ -39,12 +48,15 @@ loader.load("../assets/donunq_object.glb", (gltf) => {
 })
 
 //Planet
-const planetTexture = new THREE.TextureLoader().load("../assets/2k_venus_surface.jpg");
-const planetGeo = new THREE.SphereGeometry(0.05)
-const planetMaterial = new THREE.MeshBasicMaterial({ map: planetTexture });
-const planet = new THREE.Mesh(planetGeo, planetMaterial);
-planet.position.set(0.3, 0.3, 0.3)
-scene.add(planet);
+for (let i = 0; i < planets.length; i++) {
+    const planetTexture = new THREE.TextureLoader().load(planets[i]);
+    const planetGeo = new THREE.SphereGeometry(0.05)
+    const planetMaterial = new THREE.MeshBasicMaterial({ map: planetTexture });
+    const planet = new THREE.Mesh(planetGeo, planetMaterial);
+    planet.position.set(0.3, 0.3, 0.3)
+    scene.add(planet);
+}
+
 
 function animate() {
     requestAnimationFrame(animate);
