@@ -7,3 +7,7 @@
 ever wondered if there were donunqs running around, well it's true. find out where we uncovered the first location of the very first donunq.
 <br>
 [find the donunq](https://donunq.arthuris.online)
+
+still to-do's for this projo:
+- [ ] add loader animation (so that we dont see only the donut while everything else is still loading...)
+- [ ] add animation to the donunq (let it runn)
