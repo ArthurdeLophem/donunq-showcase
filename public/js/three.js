@@ -61,15 +61,14 @@ for (let i = 0; i < planets.length; i++) {
     scene.add(planet);
 }
 
+const render = () => {
+    renderer.render(scene, camera);
+}
 
-function animate() {
+const animate = () => {
     requestAnimationFrame(animate);
     controls.update();
     render();
-}
-
-function render() {
-    renderer.render(scene, camera);
 }
 
 animate()
