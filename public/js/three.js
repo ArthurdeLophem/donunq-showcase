@@ -49,11 +49,15 @@ loader.load("../assets/donunq_object.glb", (gltf) => {
 
 //Planet
 for (let i = 0; i < planets.length; i++) {
+    let x = Math.floor(Math.random() * 3);
+    let y = Math.floor(Math.random() * 3);
+    let z = Math.floor(Math.random() * 3);
+    console.log(x, y, z)
     const planetTexture = new THREE.TextureLoader().load(planets[i]);
     const planetGeo = new THREE.SphereGeometry(0.05)
     const planetMaterial = new THREE.MeshBasicMaterial({ map: planetTexture });
     const planet = new THREE.Mesh(planetGeo, planetMaterial);
-    planet.position.set(0.3, 0.3, 0.3)
+    planet.position.set(x, y, z)
     scene.add(planet);
 }
 
