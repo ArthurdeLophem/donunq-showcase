@@ -19,10 +19,15 @@ const loaderText = document.querySelector(".loader__text")
 const manager = new THREE.LoadingManager();
 manager.onLoad = () => {
     loaderText.innerHTML = "completed";
+    setInterval(() => {
+        loaderText.style.display = "none";
+        document.body.appendChild(renderer.domElement);
+        renderer.outputEncoding = THREE.sRGBEncoding;
+    }, 1500)
 };
 
-manager.onStart = (itemsLoaded, itemsTotal) => {
-    loaderText.innerHTML = "start loading elements";
+manager.onStart = (itemsTotal) => {
+    loaderText.innerHTML = "start loading" + itemsTotal + "elements";
 };
 
 manager.onProgress = (itemsLoaded, itemsTotal) => {
@@ -35,8 +40,6 @@ camera.position.z = 0.4;
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-renderer.outputEncoding = THREE.sRGBEncoding;
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
