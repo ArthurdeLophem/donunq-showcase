@@ -7,23 +7,23 @@ export default class House {
                 key: "front",
                 posx: 0,
                 posy: 0,
-                posz: 0.5,
+                posz: 0.46,
                 rotax: 0,
-                rotay: 1.5,
+                rotay: 1.57,
                 rotaz: 0
             },
             {
                 key: "back",
                 posx: 0,
                 posy: 0,
-                posz: -0.5,
+                posz: -0.46,
                 rotax: 0,
-                rotay: -1.6,
+                rotay: -1.57,
                 rotaz: 0
             },
             {
                 key: "right",
-                posx: 0.5,
+                posx: 0.46,
                 posy: 0,
                 posz: 0,
                 rotax: 0,
@@ -32,7 +32,7 @@ export default class House {
             },
             {
                 key: "left",
-                posx: -0.5,
+                posx: -0.46,
                 posy: 0,
                 posz: 0,
                 rotax: 0,
@@ -42,10 +42,10 @@ export default class House {
             {
                 key: "bottom",
                 posx: 0,
-                posy: -0.5,
+                posy: -0.46,
                 posz: 0,
-                rotax: 1.6,
-                rotay: 1.6,
+                rotax: 1.57,
+                rotay: 1.57,
                 rotaz: 0
             }
         ]
@@ -55,13 +55,16 @@ export default class House {
         this.house.forEach(house => {
             console.log(this.house)
             const geometry = new THREE.BoxGeometry(0.1);
-            const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+            const texture = new THREE.TextureLoader();
+            const wallColor = texture.load("../assets/baseColor.jpeg");
+            const material = new THREE.MeshBasicMaterial({ map: wallColor });
             const wall = new THREE.Mesh(geometry, material);
             wall.position.set(this.hCenter + house.posx, this.hCenter + house.posy, this.hCenter + house.posz);
             wall.rotation.set(house.rotax, house.rotay, house.rotaz);
             scene.add(wall);
         })
     }
+
     createHouseRoof(scene) {
         const geometry = new THREE.ConeGeometry(0.8, 1);
         const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
