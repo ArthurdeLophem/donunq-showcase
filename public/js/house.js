@@ -50,4 +50,16 @@ export default class House {
             }
         ]
     }
+
+    createHouseWalls(scene) {
+        this.house.forEach(house => {
+            console.log(this.house)
+            const geometry = new THREE.BoxGeometry(0.1);
+            const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+            const wall = new THREE.Mesh(geometry, material);
+            wall.position.set(this.hCenter + house.posx, this.hCenter + house.posy, this.hCenter + house.posz);
+            wall.rotation.set(this.hCenter + house.rotax, this.hCenter + house.rotay, this.hCenter + house.rotaz);
+            scene.add(wall);
+        })
+    }
 }
