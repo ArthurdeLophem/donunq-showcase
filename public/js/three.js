@@ -1,17 +1,9 @@
 import * as THREE from 'three';
 import House from './house';
+import Planets from './planets';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
-
-const planets = [
-    '../assets/2k_venus_surface.jpg',
-    '../assets/2k_jupiter.jpg',
-    '../assets/2k_mars.jpg',
-    '../assets/2k_mercury.jpg',
-    '../assets/2k_neptune.jpg',
-    '../assets/2k_uranus.jpg'
-]
 
 const loaderText = document.querySelector(".loader__text")
 
@@ -44,7 +36,7 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 //controls.autoRotate = true
 
-camera.position.set(0, 0.2, 0.4);
+camera.position.set(0, 0.6, 2);
 controls.update();
 
 //house
@@ -72,18 +64,8 @@ loader.load("../assets/donunq_object.glb", (gltf) => {
 })
 
 //Planet
-for (let i = 0; i < planets.length; i++) {
-    let x = Math.floor(Math.random() * 3.5);
-    let y = Math.floor(Math.random() * 3.5);
-    let z = Math.floor(Math.random() * 3.5);
-    console.log(x, y, z)
-    const planetTexture = new THREE.TextureLoader(manager).load(planets[i]);
-    const planetGeo = new THREE.SphereGeometry(0.2)
-    const planetMaterial = new THREE.MeshBasicMaterial({ map: planetTexture });
-    const planet = new THREE.Mesh(planetGeo, planetMaterial);
-    planet.position.set(x, y, z)
-    scene.add(planet);
-}
+let planet = new Planets();
+planet.createPlanets(scene);
 
 const render = () => {
     renderer.render(scene, camera);
