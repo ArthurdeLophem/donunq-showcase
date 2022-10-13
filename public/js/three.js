@@ -43,6 +43,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
+controls.autoRotate = true
 
 camera.position.set(0, 0.2, 0.4);
 controls.update();
