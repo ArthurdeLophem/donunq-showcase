@@ -1,9 +1,8 @@
 import * as THREE from 'three';
+import House from './house';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { HDRCubeTextureLoader } from "three/addons/loaders/HDRCubeTextureLoader.js";
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
-import { sRGBEncoding } from 'three';
 
 const planets = [
     '../assets/2k_venus_surface.jpg',
@@ -43,10 +42,13 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
-controls.autoRotate = true
+//controls.autoRotate = true
 
 camera.position.set(0, 0.2, 0.4);
 controls.update();
+
+//house
+let house = new House(0);
 
 //hdri
 const rgbeLoader = new RGBELoader(manager);
