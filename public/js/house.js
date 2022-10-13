@@ -66,10 +66,13 @@ export default class House {
     }
 
     createHouseRoof(scene) {
-        const geometry = new THREE.ConeGeometry(0.8, 1);
-        const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+        const geometry = new THREE.ConeGeometry(0.8, 0.8, 4);
+        const texture = new THREE.TextureLoader();
+        const roofColor = texture.load("../assets/roofTexture.jpg");
+        const material = new THREE.MeshBasicMaterial({ map: roofColor });
         const roof = new THREE.Mesh(geometry, material);
-        roof.position.set(this.hCenter + 0, this.hCenter + 1, this.hCenter + 0);
+        roof.position.set(this.hCenter + 0, this.hCenter + 0.9, this.hCenter + 0);
+        roof.rotation.set(0, 0.77, 0);
         scene.add(roof);
     }
 }
