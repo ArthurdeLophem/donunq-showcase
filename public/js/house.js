@@ -62,4 +62,11 @@ export default class House {
             scene.add(wall);
         })
     }
+    createHouseRoof(scene) {
+        const geometry = new THREE.ConeGeometry(0.8, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+        const roof = new THREE.Mesh(geometry, material);
+        roof.position.set(this.hCenter + 1.5, this.hCenter + 2, this.hCenter + 1);
+        scene.add(roof);
+    }
 }

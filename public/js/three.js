@@ -50,6 +50,7 @@ controls.update();
 //house
 let house = new House(0);
 house.createHouseWalls(scene);
+house.createHouseRoof(scene);
 
 //hdri
 const rgbeLoader = new RGBELoader(manager);
