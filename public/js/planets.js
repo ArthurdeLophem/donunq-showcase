@@ -16,6 +16,11 @@ export default class Planet {
             let x = Math.floor(Math.random() * 3.5);
             let y = Math.floor(Math.random() * 3.5);
             let z = Math.floor(Math.random() * 3.5);
+            if (x === 0 && y === 0 && z === 0) {
+                x = Math.floor(Math.random() * 3.5);
+                y = Math.floor(Math.random() * 3.5);
+                z = Math.floor(Math.random() * 3.5);
+            }
             console.log(x, y, z)
             const planetTexture = new THREE.TextureLoader().load(this.planets[i]);
             const planetGeo = new THREE.SphereGeometry(0.2)
