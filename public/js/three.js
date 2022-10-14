@@ -43,6 +43,7 @@ controls.update();
 let house = new House(0);
 house.createHouseWalls(scene);
 house.createHouseRoof(scene);
+house.createVisiteKaart(scene);
 
 //hdri
 const rgbeLoader = new RGBELoader(manager);

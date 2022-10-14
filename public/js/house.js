@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+import { TTFLoader } from 'three/examples/jsm/loaders/TTFLoader';
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
 export default class House {
     constructor(hCenter) {
         this.hCenter = hCenter;
@@ -74,5 +77,21 @@ export default class House {
         roof.position.set(this.hCenter + 0, this.hCenter + 0.9, this.hCenter + 0);
         roof.rotation.set(0, 0.77, 0);
         scene.add(roof);
+    }
+
+    createVisiteKaart(scene) {
+        const loader = new FontLoader();
+        loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
+            const geometry = new TextGeometry('wow... where has the donunq gone?', {
+                font: font,
+                size: 0.04,
+                height: 0.003
+            });
+            const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+            const visite = new THREE.Mesh(geometry, material);
+            visite.position.set(this.hCenter + -0.5, this.hCenter + 0, this.hCenter + 0.51);
+            visite.rotation.set(0, 0, 0);
+            scene.add(visite);
+        });
     }
 }
