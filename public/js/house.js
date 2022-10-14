@@ -81,6 +81,8 @@ export default class House {
 
     createVisiteKaart(scene) {
         const loader = new FontLoader();
+
+        //font
         loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
             const geometry = new TextGeometry('wow... where has the donunq gone?', {
                 font: font,
@@ -89,9 +91,17 @@ export default class House {
             });
             const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
             const visite = new THREE.Mesh(geometry, material);
-            visite.position.set(this.hCenter + -0.5, this.hCenter + 0, this.hCenter + 0.51);
-            visite.rotation.set(0, 0, 0);
+            visite.position.set(this.hCenter + -0.45, this.hCenter + -0.02, this.hCenter + 0.52);
             scene.add(visite);
         });
+
+        //card
+        const geometry = new THREE.BoxGeometry(0.08, 0.15, 0.94);
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const kaart = new THREE.Mesh(geometry, material);
+        kaart.position.set(this.hCenter + 0, this.hCenter + 0, this.hCenter + 0.48);
+        kaart.rotation.set(0, 1.57, 0);
+
+        scene.add(kaart);
     }
 }
