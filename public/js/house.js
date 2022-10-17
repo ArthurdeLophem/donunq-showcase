@@ -58,6 +58,7 @@ export default class House {
             {
                 key: "front",
                 title: "wow... where has the donunq gone?",
+                textSize: 0.04,
                 textPos: {
                     x: -0.45,
                     y: -0.02,
@@ -66,12 +67,38 @@ export default class House {
                 cardPos: {
                     x: 0,
                     y: 0,
-                    z: 0.48
+                    z: 0.51
+                },
+                cardHW: {
+                    width: 0.95,
+                    height: 0.1,
+                    depth: 0.01
+                }
+            },
+            {
+                key: "frontTop",
+                title: "Arthur dL-Productions presents...",
+                textSize: 0.03,
+                textPos: {
+                    x: -0.30,
+                    y: 0.2,
+                    z: 0.52
+                },
+                cardPos: {
+                    x: 0,
+                    y: 0.21,
+                    z: 0.51
+                },
+                cardHW: {
+                    width: 0.7,
+                    height: 0.1,
+                    depth: 0.01
                 }
             },
             {
                 key: "inside",
                 title: "freshly served",
+                textSize: 0.04,
                 textPos: {
                     x: -0.18,
                     y: 0.23,
@@ -80,7 +107,12 @@ export default class House {
                 cardPos: {
                     x: 0,
                     y: 0.25,
-                    z: -0.44
+                    z: -0.41
+                },
+                cardHW: {
+                    width: 0.5,
+                    height: 0.08,
+                    depth: 0.01
                 }
             }
         ]
@@ -118,7 +150,7 @@ export default class House {
             loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', (font) => {
                 const geometry = new TextGeometry(card.title, {
                     font: font,
-                    size: 0.04,
+                    size: card.textSize,
                     height: 0.003
                 });
                 const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
@@ -128,11 +160,11 @@ export default class House {
             });
 
             //card
-            const geometry = new THREE.BoxGeometry(0.08, 0.15, 0.94);
+            const geometry = new THREE.BoxGeometry(card.cardHW.width, card.cardHW.height, card.cardHW.depth);
             const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
             const kaart = new THREE.Mesh(geometry, material);
             kaart.position.set(this.hCenter + card.cardPos.x, this.hCenter + card.cardPos.y, this.hCenter + card.cardPos.z);
-            kaart.rotation.set(0, this.dividPi, 0);
+            //kaart.rotation.set(0, this.dividPi, 0);
 
             scene.add(kaart);
         });
